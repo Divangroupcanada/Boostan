@@ -3,196 +3,603 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Coming Soon</title>
-<meta name="description" content="Something new is taking root.">
+<title>Boostan Group — A brand & growth studio. Coming 2026.</title>
+<meta name="description" content="Boostan Group is a brand and growth studio for ambitious businesses — real estate, hospitality, retail, and beyond. Plant. Nurture. Flourish. From the team behind Divan Group. Toronto.">
+<meta name="theme-color" content="#0E3F2C">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Boostan Group">
+<meta property="og:title" content="Boostan Group — A brand & growth studio. Coming 2026.">
+<meta property="og:description" content="We help ambitious brands take root and rise. Plant. Nurture. Flourish. Toronto · A Divan Group company.">
+<meta property="og:url" content="https://www.boostangroup.com/">
+<meta property="og:locale" content="en_CA">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,400&family=Hanken+Grotesk:wght@400;600;700&family=Markazi+Text:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600;700&family=Markazi+Text:wght@500;600&family=Vazirmatn:wght@400;500&display=swap" rel="stylesheet">
+
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
-  :root{--green:#0E3F2C;--gold:#D69A2D;--gold2:#E7C079;--parch:#F4EEE2;}
-  html{scroll-behavior:smooth}
-  body{min-height:100svh;font-family:'Fraunces',serif;color:var(--parch);
-    background:radial-gradient(120% 80% at 50% 38%,#134A34 0%,#0E3F2C 48%,#0A2E20 100%);
-    display:flex;flex-direction:column;overflow-x:hidden}
-  .bg{position:fixed;inset:0;pointer-events:none;z-index:0}
-  .charbagh{position:fixed;inset:0;opacity:.05;z-index:0;pointer-events:none}
-  .glow{position:fixed;inset:0;z-index:0;pointer-events:none;
-    background:radial-gradient(42% 28% at 50% 40%,rgba(214,154,45,.28) 0%,rgba(214,154,45,0) 70%);
-    animation:pulse 6s ease-in-out infinite}
-  .grain{position:fixed;inset:0;opacity:.06;mix-blend-mode:soft-light;z-index:0;pointer-events:none}
+  :root{
+    --green:#0E3F2C; --green-2:#155A40; --deep:#0A2E20; --deep-3:#06180F;
+    --gold:#D69A2D; --gold-soft:#E7C079; --pom:#9C2A2A;
+    --parch:#F4EEE2; --bark:#1C1A15;
+    --ink:rgba(244,238,226,.82); --ink-dim:rgba(244,238,226,.56); --ink-faint:rgba(244,238,226,.34);
+    --hair:rgba(231,192,121,.20); --hair-2:rgba(231,192,121,.32);
+    --maxw:1180px; --pad:clamp(22px,5vw,56px);
+    --sp:clamp(80px,12vw,156px);
+  }
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    font-family:'Hanken Grotesk',system-ui,sans-serif;color:var(--ink);
+    background:var(--deep);overflow-x:hidden;line-height:1.65;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  }
+  ::selection{background:rgba(214,154,45,.3);color:var(--parch)}
+  a{color:inherit;text-decoration:none}
+  :focus-visible{outline:2px solid var(--gold-soft);outline-offset:3px;border-radius:4px}
 
-  .shell{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;
-    align-items:center;justify-content:space-between;min-height:100svh;
-    padding:clamp(28px,5vw,52px) 24px;text-align:center}
+  /* ---------- background layers ---------- */
+  .bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+  .bg .grad{position:absolute;inset:0;
+    background:
+      radial-gradient(120% 90% at 50% -10%, #16523A 0%, #0E3F2C 42%, #0A2E20 72%, #06180F 100%);}
+  .bg .charbagh{position:absolute;inset:0;opacity:.05}
+  .bg .glow{position:absolute;left:50%;top:0;width:min(90vw,1100px);height:90vh;transform:translateX(-50%);
+    background:radial-gradient(50% 42% at 50% 30%, rgba(214,154,45,.22) 0%, rgba(214,154,45,0) 70%);
+    animation:breathe 9s ease-in-out infinite}
+  .bg .grain{position:absolute;inset:0;opacity:.05;mix-blend-mode:soft-light}
 
-  /* top wordmark */
-  .brand{display:flex;align-items:center;gap:12px;opacity:0;animation:rise 1s ease .1s forwards}
-  .brand svg{width:26px;height:auto}
-  .brand .wm{font-weight:300;letter-spacing:.16em;font-size:15px}
-  .brand .wm b{font-weight:300;color:var(--gold)}
+  /* ---------- layout primitives ---------- */
+  .wrap{position:relative;z-index:2}
+  .container{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+  .section{padding-top:var(--sp);padding-bottom:var(--sp)}
+  .rule{height:1px;background:linear-gradient(to right,transparent,var(--hair) 18%,var(--hair) 82%,transparent);
+    max-width:var(--maxw);margin:0 auto}
 
-  /* center */
-  .center{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;gap:clamp(22px,3.4vw,34px);padding:40px 0}
-  .cs{font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:13px;
-    letter-spacing:.5em;text-indent:.5em;color:var(--gold);text-transform:uppercase;
-    display:flex;align-items:center;gap:16px;opacity:0;animation:rise 1s ease .3s forwards}
-  .cs .r{width:38px;height:1px;background:var(--gold);opacity:.6}
+  .eyebrow{font-size:12px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);
+    display:inline-flex;align-items:center;gap:14px}
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--gold);opacity:.7}
 
-  .emblem{height:clamp(120px,18vw,176px);display:flex;align-items:flex-end;opacity:0;
-    animation:grow 1.5s cubic-bezier(.2,.7,.2,1) .5s forwards}
-  .emblem svg{height:100%;width:auto;filter:drop-shadow(0 6px 26px rgba(214,154,45,.45))}
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:300;letter-spacing:-.02em;color:var(--parch);line-height:1.05}
+  .h2{font-size:clamp(30px,4.5vw,58px)}
+  .lead{font-size:clamp(16px,1.45vw,19px);color:var(--ink);max-width:54ch}
+  .fr-i{font-family:'Fraunces',serif;font-style:italic;font-weight:400;color:var(--gold)}
 
-  .triad{line-height:1.08;letter-spacing:-.015em}
-  .triad div{opacity:0}
-  .triad .w{font-weight:300;font-size:clamp(46px,9vw,90px);color:var(--parch)}
-  .triad .w .d{color:var(--gold)}
-  .triad .fl{font-style:italic;font-weight:400;font-size:clamp(46px,9vw,90px);color:var(--gold)}
-  .triad div:nth-child(1){animation:rise 1s ease .75s forwards}
-  .triad div:nth-child(2){animation:rise 1s ease .9s forwards}
-  .triad div:nth-child(3){animation:rise 1s ease 1.05s forwards}
+  /* ---------- buttons ---------- */
+  .btn{font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:14px;letter-spacing:.03em;
+    border:none;cursor:pointer;border-radius:999px;padding:13px 26px;transition:transform .25s ease,background .25s ease,color .25s ease,box-shadow .25s ease;white-space:nowrap}
+  .btn-gold{background:var(--gold);color:var(--green)}
+  .btn-gold:hover{background:var(--gold-soft);transform:translateY(-1px);box-shadow:0 10px 30px -12px rgba(214,154,45,.6)}
+  .btn-ghost{background:transparent;color:var(--parch);border:1px solid var(--hair-2)}
+  .btn-ghost:hover{border-color:var(--gold-soft);color:var(--gold-soft)}
 
-  .line{font-style:italic;font-weight:400;font-size:clamp(17px,2.4vw,23px);
-    color:rgba(244,238,226,.66);opacity:0;animation:rise 1s ease 1.25s forwards}
+  /* ---------- nav ---------- */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .4s ease,backdrop-filter .4s ease,border-color .4s ease;
+    border-bottom:1px solid transparent}
+  .nav.solid{background:rgba(8,30,21,.72);backdrop-filter:blur(14px);border-bottom-color:rgba(231,192,121,.14)}
+  .nav .row{max-width:var(--maxw);margin:0 auto;padding:16px var(--pad);display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .brand{display:flex;align-items:center;gap:11px}
+  .brand svg{width:24px;height:auto;display:block}
+  .brand .wm{font-family:'Hanken Grotesk',sans-serif;font-weight:600;letter-spacing:.16em;font-size:14px;color:var(--parch)}
+  .brand .wm b{font-weight:600;color:var(--gold)}
+  .nav .cta{display:flex;align-items:center;gap:18px}
+  .nav .tag{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint)}
 
-  /* email capture */
-  .signup{margin-top:6px;width:100%;max-width:440px;opacity:0;animation:rise 1s ease 1.45s forwards}
-  .signup form{display:flex;gap:10px;background:rgba(244,238,226,.06);
-    border:1px solid rgba(231,192,121,.28);border-radius:999px;padding:7px 7px 7px 22px}
-  .signup input{flex:1;background:transparent;border:none;outline:none;color:var(--parch);
-    font-family:'Hanken Grotesk',sans-serif;font-size:15px;letter-spacing:.01em}
-  .signup input::placeholder{color:rgba(244,238,226,.45)}
-  .signup button{font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:14px;
-    letter-spacing:.04em;color:var(--green);background:var(--gold);border:none;cursor:pointer;
-    border-radius:999px;padding:12px 22px;transition:transform .25s ease,background .25s ease}
-  .signup button:hover{transform:translateY(-1px);background:var(--gold2)}
-  .micro{margin-top:12px;font-family:'Hanken Grotesk',sans-serif;font-size:12px;
-    letter-spacing:.03em;color:rgba(244,238,226,.4)}
-  .thanks{display:none;font-family:'Hanken Grotesk',sans-serif;font-size:15px;color:var(--gold2);padding:14px}
-  .err{display:none;font-family:'Hanken Grotesk',sans-serif;font-size:12.5px;color:#F0B8A8;margin-top:10px}
-  .signup button:disabled{opacity:.7;cursor:default;transform:none}
+  /* ---------- hero ---------- */
+  .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+    padding:120px 0 64px;text-align:center}
+  .hero .container{display:flex;flex-direction:column;align-items:center;gap:clamp(20px,3vw,30px)}
+  .emblem{height:clamp(96px,13vw,150px)}
+  .emblem svg{height:100%;width:auto;filter:drop-shadow(0 8px 30px rgba(214,154,45,.42))}
+  .hero h1{font-size:clamp(42px,7.6vw,104px);letter-spacing:-.025em;max-width:15ch}
+  .hero .lead{text-align:center;color:var(--ink);max-width:60ch;margin:0 auto}
+  .whisper{display:flex;flex-direction:column;align-items:center;gap:4px;margin-top:2px}
+  .whisper .fa{font-family:'Markazi Text',serif;font-weight:600;font-size:clamp(22px,3vw,30px);color:rgba(231,192,121,.7);direction:rtl}
+  .whisper .en{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--ink-faint)}
 
-  /* footer */
-  .foot{opacity:0;animation:rise 1s ease 1.65s forwards;display:flex;flex-direction:column;gap:8px;align-items:center}
-  .foot .fa{font-family:'Markazi Text',serif;font-weight:600;font-size:24px;
-    color:rgba(231,192,121,.55);direction:rtl}
-  .foot .meta{font-family:'Hanken Grotesk',sans-serif;font-size:11.5px;letter-spacing:.16em;
-    text-transform:uppercase;color:rgba(244,238,226,.38)}
+  /* ---------- signup (reusable) ---------- */
+  .signup{width:100%;max-width:464px;margin:6px auto 0}
+  .signup .label{font-size:13px;letter-spacing:.02em;color:var(--ink-dim);margin-bottom:12px}
+  form.notify .row{display:flex;gap:9px;background:rgba(244,238,226,.05);
+    border:1px solid var(--hair-2);border-radius:999px;padding:7px 7px 7px 22px;transition:border-color .3s ease}
+  form.notify .row:focus-within{border-color:rgba(231,192,121,.5)}
+  form.notify .email{flex:1;min-width:0;background:transparent;border:none;outline:none;color:var(--parch);
+    font-family:'Hanken Grotesk',sans-serif;font-size:15px}
+  form.notify .email::placeholder{color:rgba(244,238,226,.4)}
+  form.notify .submit:disabled{opacity:.7;cursor:default;transform:none;box-shadow:none}
+  form.notify .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
+  .form-msg{display:none;font-size:13px;margin-top:12px;line-height:1.5}
+  .form-msg.show{display:block}
+  .form-msg.err{color:#F2B5A6}
+  .form-msg.ok{color:var(--gold-soft)}
+  .micro{margin-top:12px;font-size:12px;letter-spacing:.02em;color:var(--ink-faint)}
 
-  @keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
-  @keyframes grow{from{opacity:0;transform:scaleY(.2);transform-origin:bottom}to{opacity:1;transform:scaleY(1);transform-origin:bottom}}
-  @keyframes pulse{0%,100%{opacity:.85}50%{opacity:1}}
-  @media (max-width:520px){.signup form{flex-direction:column;border-radius:18px;padding:14px}.signup button{padding:13px}}
+  /* ---------- statement strip ---------- */
+  .statement{text-align:center}
+  .statement p{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(26px,3.7vw,46px);line-height:1.28;
+    color:var(--parch);max-width:20ch;margin:0 auto;letter-spacing:-.015em}
+
+  /* ---------- growth framework (signature) ---------- */
+  .grow .head{max-width:var(--maxw);margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px;margin-bottom:clamp(40px,6vw,72px)}
+  .grow-band{position:relative;max-width:760px;margin:0 auto;height:120px}
+  .grow-band .ground{position:absolute;left:0;right:0;bottom:18px;height:1px;
+    background:linear-gradient(to right,transparent,var(--gold) 14%,var(--gold) 86%,transparent);opacity:.5}
+  .grow-band .node{position:absolute;bottom:14px;width:9px;height:9px;border-radius:50%;background:var(--gold);
+    box-shadow:0 0 14px 2px rgba(214,154,45,.5)}
+  .grow-band .glyphs{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:space-around;padding:0 6%}
+  .grow-band .glyphs > div{display:flex;align-items:flex-end;justify-content:center;flex:1}
+  .grow-band svg{width:auto;display:block;filter:drop-shadow(0 6px 16px rgba(214,154,45,.3))}
+  .g1 svg{height:42px}.g2 svg{height:74px}.g3 svg{height:104px}
+
+  .grow-grid{max-width:var(--maxw);margin:clamp(24px,3vw,36px) auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,40px)}
+  .phase{text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;padding:0 8px}
+  .phase .pnum{font-family:'Fraunces',serif;font-style:italic;font-weight:400;font-size:15px;color:var(--gold)}
+  .phase h3{font-size:clamp(22px,2.4vw,30px)}
+  .phase .sub{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-faint);margin-top:-4px}
+  .phase p{font-size:15px;color:var(--ink-dim);max-width:30ch}
+
+  /* ---------- capabilities ---------- */
+  .cap .head{display:flex;flex-direction:column;gap:16px;margin-bottom:clamp(36px,5vw,56px);max-width:34ch}
+  .cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--hair);border:1px solid var(--hair);border-radius:18px;overflow:hidden}
+  .cell{background:linear-gradient(180deg,rgba(244,238,226,.025),rgba(244,238,226,.01));padding:clamp(24px,3vw,34px);min-height:178px;display:flex;flex-direction:column;gap:12px;transition:background .35s ease}
+  .cell:hover{background:linear-gradient(180deg,rgba(231,192,121,.08),rgba(231,192,121,.02))}
+  .cell .ci{width:30px;height:30px;color:var(--gold)}
+  .cell h3{font-size:20px;font-weight:400}
+  .cell p{font-size:14px;color:var(--ink-dim)}
+
+  /* ---------- industries ---------- */
+  .ind .head{text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px;margin-bottom:clamp(34px,4.5vw,52px)}
+  .ind-list{max-width:880px;margin:0 auto;display:flex;flex-direction:column}
+  .ind-row{display:flex;align-items:baseline;gap:22px;padding:22px 6px;border-top:1px solid var(--hair);transition:padding-left .35s ease}
+  .ind-row:last-child{border-bottom:1px solid var(--hair)}
+  .ind-row:hover{padding-left:18px}
+  .ind-row .n{font-family:'Fraunces',serif;font-style:italic;font-size:14px;color:var(--gold);min-width:34px}
+  .ind-row .name{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(22px,3vw,34px);color:var(--parch);flex:1}
+  .ind-row .desc{font-size:13.5px;color:var(--ink-faint);text-align:right;max-width:30ch;display:none}
+  .seedling{margin:clamp(36px,5vw,56px) auto 0;max-width:880px;display:flex;align-items:center;gap:16px;justify-content:center;
+    padding:18px 24px;border:1px solid var(--hair-2);border-radius:999px;background:rgba(214,154,45,.05)}
+  .seedling svg{height:30px;flex-shrink:0}
+  .seedling .t{font-size:14.5px;color:var(--ink)}
+  .seedling .t b{color:var(--gold-soft);font-weight:600}
+  .seedling .pill{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--green);background:var(--gold);padding:5px 11px;border-radius:999px;font-weight:700;flex-shrink:0}
+
+  /* ---------- name / story ---------- */
+  .name-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(40px,6vw,80px);align-items:center;max-width:var(--maxw);margin:0 auto}
+  .name-copy{display:flex;flex-direction:column;gap:20px}
+  .name-copy .h2{max-width:14ch}
+  .name-copy p{font-size:clamp(15px,1.4vw,17px);color:var(--ink);max-width:52ch}
+  .name-copy .fa-word{font-family:'Markazi Text',serif;font-weight:600;color:var(--gold-soft);direction:rtl;font-size:1.15em}
+  .charbagh-fig{display:flex;flex-direction:column;align-items:center;gap:18px}
+  .charbagh-fig svg{width:min(100%,300px);height:auto}
+  .charbagh-fig .cap{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);text-align:center}
+  .charbagh-fig .cap b{color:var(--gold);font-weight:600}
+
+  /* ---------- promise ---------- */
+  .promise .head{text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px;margin-bottom:clamp(36px,5vw,56px)}
+  .promise .head .h2{max-width:16ch}
+  .prom-grid{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--hair)}
+  .prom{background:var(--deep);padding:clamp(26px,3.4vw,38px);display:flex;gap:18px;align-items:flex-start}
+  .prom .num{font-family:'Fraunces',serif;font-style:italic;font-size:20px;color:var(--gold);line-height:1}
+  .prom h3{font-size:19px;font-weight:400;margin-bottom:6px}
+  .prom p{font-size:14px;color:var(--ink-dim)}
+
+  /* ---------- final CTA ---------- */
+  .cta-band{text-align:center}
+  .cta-band .container{display:flex;flex-direction:column;align-items:center;gap:22px}
+  .cta-band .emblem{height:clamp(64px,9vw,92px);margin-bottom:4px}
+  .cta-band h2{font-size:clamp(32px,5vw,64px);max-width:16ch}
+  .cta-band .lead{text-align:center;color:var(--ink-dim)}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--hair);padding:clamp(48px,7vw,80px) 0 40px}
+  .foot-grid{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad);display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;align-items:flex-start}
+  .foot-brand{display:flex;flex-direction:column;gap:14px;max-width:320px}
+  .foot-brand .brand svg{width:30px}
+  .foot-brand .brand .wm{font-size:16px;letter-spacing:.18em}
+  .foot-brand .fa{font-family:'Markazi Text',serif;font-weight:600;font-size:21px;color:rgba(231,192,121,.6);direction:rtl}
+  .foot-brand p{font-size:13px;color:var(--ink-faint);line-height:1.6}
+  .foot-right{display:flex;flex-direction:column;gap:10px;text-align:right}
+  .foot-right a.parent{font-size:14px;color:var(--ink);border-bottom:1px solid var(--hair-2);padding-bottom:3px;align-self:flex-end;transition:color .3s ease,border-color .3s ease}
+  .foot-right a.parent:hover{color:var(--gold-soft);border-color:var(--gold-soft)}
+  .foot-right .copy{font-size:12px;color:var(--ink-faint);letter-spacing:.04em}
+
+  /* ---------- reveal animation ---------- */
+  [data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+  [data-reveal].in{opacity:1;transform:none}
+
+  /* hero load sequence */
+  .hl{opacity:0;animation:rise 1s ease forwards}
+  .hl.d1{animation-delay:.1s}.hl.d2{animation-delay:.28s}.hl.d3{animation-delay:.46s}.hl.d4{animation-delay:.62s}.hl.d5{animation-delay:.78s}.hl.d6{animation-delay:.94s}
+  .emblem.hl{animation:grow 1.5s cubic-bezier(.2,.7,.2,1) .15s forwards}
+
+  @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+  @keyframes grow{from{opacity:0;transform:scaleY(.3);transform-origin:bottom}to{opacity:1;transform:scaleY(1);transform-origin:bottom}}
+  @keyframes breathe{0%,100%{opacity:.8;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.04)}}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:880px){
+    .name-grid{grid-template-columns:1fr;gap:40px}
+    .charbagh-fig{order:-1}
+    .cap-grid{grid-template-columns:repeat(2,1fr)}
+    .prom-grid{grid-template-columns:1fr}
+  }
+  @media (max-width:620px){
+    .nav .tag{display:none}
+    .grow-grid{grid-template-columns:1fr;gap:30px}
+    .grow-band{max-width:280px;height:118px}
+    .cap-grid{grid-template-columns:1fr}
+    .cell{min-height:0}
+    form.notify .row{flex-direction:column;border-radius:18px;padding:12px}
+    form.notify .submit{padding:14px}
+    .ind-row .name{font-size:24px}
+    .seedling{flex-direction:column;text-align:center;border-radius:20px;gap:12px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+    [data-reveal],.hl,.emblem.hl{opacity:1!important;transform:none!important}
+  }
 </style>
 </head>
 <body>
+
+<!-- ===== background ===== -->
+<div class="bg" aria-hidden="true">
+  <div class="grad"></div>
   <svg class="charbagh" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-    <defs><pattern id="cb" width="92" height="92" patternUnits="userSpaceOnUse">
+    <defs><pattern id="cb" width="96" height="96" patternUnits="userSpaceOnUse">
       <g fill="none" stroke="#E7C079" stroke-width="1">
-        <rect x="12" y="12" width="68" height="68"/><line x1="46" y1="12" x2="46" y2="80"/>
-        <line x1="12" y1="46" x2="80" y2="46"/><path d="M46 32 L60 46 L46 60 L32 46 Z"/></g>
-    </pattern></defs><rect width="100%" height="100%" fill="url(#cb)"/></svg>
+        <rect x="12" y="12" width="72" height="72"/>
+        <line x1="48" y1="12" x2="48" y2="84"/><line x1="12" y1="48" x2="84" y2="48"/>
+        <path d="M48 30 L66 48 L48 66 L30 48 Z"/>
+      </g>
+    </pattern></defs>
+    <rect width="100%" height="100%" fill="url(#cb)"/>
+  </svg>
   <div class="glow"></div>
   <svg class="grain" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
     <filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/></filter>
-    <rect width="100%" height="100%" filter="url(#n)"/></svg>
+    <rect width="100%" height="100%" filter="url(#n)"/>
+  </svg>
+</div>
 
-  <div class="shell">
-    <!-- top brand — remove this block if you want the page fully nameless for the teaser -->
-    <div class="brand">
+<!-- ===== nav ===== -->
+<header class="nav" id="nav">
+  <div class="row">
+    <a class="brand" href="#top" aria-label="Boostan Group home">
       <svg viewBox="0 0 120 168" xmlns="http://www.w3.org/2000/svg"><path d="M60 126 C50 121 31 105 35 78 C38 51 49 31 62 14 C75 31 84 54 86 80 C88 107 71 121 64 126 Z" fill="#D69A2D"/><rect x="56" y="120" width="8" height="30" rx="3" fill="#0E3F2C"/></svg>
       <span class="wm">BOOSTAN <b>GROUP</b></span>
+    </a>
+    <div class="cta">
+      <span class="tag">Coming 2026</span>
+      <a class="btn btn-gold" href="#notify">Notify me</a>
     </div>
+  </div>
+</header>
 
-    <div class="center">
-      <div class="cs"><span class="r"></span>Coming Soon<span class="r"></span></div>
+<main class="wrap" id="top">
 
-      <div class="emblem">
+  <!-- ===== hero ===== -->
+  <section class="hero" aria-label="Introduction">
+    <div class="container">
+      <span class="eyebrow hl d1">Coming 2026 · A Divan Group company</span>
+      <div class="emblem hl" aria-hidden="true">
         <svg viewBox="0 0 120 168" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="60" cy="152" rx="24" ry="4.5" fill="#0E3F2C" opacity=".4"/>
+          <ellipse cx="60" cy="152" rx="24" ry="4.5" fill="#0A2E20" opacity=".5"/>
           <path d="M60 126 C50 121 31 105 35 78 C38 51 49 31 62 14 C75 31 84 54 86 80 C88 107 71 121 64 126 Z" fill="#D69A2D"/>
           <path d="M60 124 C58 99 60 60 62 22" fill="none" stroke="#0E3F2C" stroke-width="3.4" stroke-linecap="round" opacity=".55"/>
           <rect x="56" y="120" width="8" height="32" rx="3" fill="#0E3F2C"/>
         </svg>
       </div>
-
-      <div class="triad">
-        <div class="w">Plant<span class="d">.</span></div>
-        <div class="w">Nurture<span class="d">.</span></div>
-        <div class="fl">Flourish.</div>
+      <h1 class="hl d2">We help ambitious brands<br>take root — and <span class="fr-i">rise</span>.</h1>
+      <p class="lead hl d3">Boostan is a brand and growth studio for businesses ready to be known — real estate, hospitality, retail, and the names that want to grow. Built by the team behind Divan&nbsp;Group.</p>
+      <div class="whisper hl d4">
+        <span class="fa" lang="fa" dir="rtl">بِکار. بپرور. شکوفا کن.</span>
+        <span class="en">Plant · Nurture · Flourish</span>
       </div>
-
-      <p class="line">Something new is taking root.</p>
-
-      <div class="signup">
-        <form id="notify" novalidate>
-          <!-- honeypot: real visitors never see or fill this; bots do -->
-          <input type="text" name="website" id="website" tabindex="-1" autocomplete="off" aria-hidden="true"
-            style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
-          <input type="email" name="email" id="email" placeholder="Your email — be first to know" required autocomplete="email">
-          <button type="submit" id="notifyBtn">Notify me</button>
+      <div class="signup hl d5" id="notify">
+        <p class="label">Be first when we open the gates.</p>
+        <form class="notify" novalidate>
+          <input type="text" class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="row">
+            <input type="email" class="email" name="email" placeholder="Your email" required autocomplete="email" aria-label="Email address">
+            <button type="submit" class="btn btn-gold submit">Notify me</button>
+          </div>
+          <p class="form-msg" role="status" aria-live="polite"></p>
         </form>
-        <div class="thanks" id="ty">Thank you — we'll be in touch when we open the gates. 🌿</div>
-        <p class="err" id="err"></p>
-        <p class="micro">No spam. Just one note when we launch.</p>
+        <p class="micro">One note when we launch. No noise in between.</p>
       </div>
     </div>
+  </section>
 
-    <div class="foot">
-      <div class="fa"><span lang="fa" dir="rtl">بِکار. بپرور. شکوفا کن.</span></div>
-      <div class="meta">Boostan Group · Toronto · 2026</div>
+  <div class="rule"></div>
+
+  <!-- ===== statement ===== -->
+  <section class="section statement" aria-label="What we believe">
+    <div class="container">
+      <p data-reveal>We don't rent attention.<br>We <span class="fr-i">grow</span> it — brands built to compound, season after season.</p>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ===== growth framework (signature) ===== -->
+  <section class="section grow" aria-label="How we work">
+    <div class="container">
+      <div class="head">
+        <span class="eyebrow" data-reveal>The way we grow</span>
+        <h2 class="h2" data-reveal style="--d:.06s">Three seasons. One garden.</h2>
+      </div>
+
+      <div class="grow-band" data-reveal aria-hidden="true">
+        <div class="ground"></div>
+        <div class="node" style="left:16.66%"></div>
+        <div class="node" style="left:50%"></div>
+        <div class="node" style="left:83.33%"></div>
+        <div class="glyphs">
+          <!-- 1 · sprout -->
+          <div class="g1"><svg viewBox="0 0 64 84" xmlns="http://www.w3.org/2000/svg">
+            <path d="M32 80 L32 50" stroke="#0E3F2C" stroke-width="3" stroke-linecap="round"/>
+            <path d="M32 58 C23 56 18 48 18 40 C28 41 32 49 32 58 Z" fill="#D69A2D"/>
+            <path d="M32 53 C41 51 46 43 46 35 C36 36 32 44 32 53 Z" fill="#E7C079"/>
+            <circle cx="32" cy="80" r="4" fill="#D69A2D"/>
+          </svg></div>
+          <!-- 2 · sapling -->
+          <div class="g2"><svg viewBox="0 0 64 116" xmlns="http://www.w3.org/2000/svg">
+            <path d="M32 104 C25 100 12 86 15 60 C18 38 25 24 32 10 C39 24 46 40 48 62 C50 86 38 100 35 104 Z" fill="#D69A2D"/>
+            <path d="M32 102 C30 76 32 42 33 16" fill="none" stroke="#0E3F2C" stroke-width="2.6" stroke-linecap="round" opacity=".5"/>
+            <rect x="29" y="100" width="6" height="14" rx="2.5" fill="#0E3F2C"/>
+          </svg></div>
+          <!-- 3 · cypress -->
+          <div class="g3"><svg viewBox="0 0 64 156" xmlns="http://www.w3.org/2000/svg">
+            <path d="M32 142 C24 136 9 116 13 78 C17 46 24 28 32 8 C40 28 47 50 49 80 C51 118 39 136 35 142 Z" fill="#D69A2D"/>
+            <path d="M32 140 C30 104 32 56 33 14" fill="none" stroke="#0E3F2C" stroke-width="2.8" stroke-linecap="round" opacity=".5"/>
+            <rect x="28.5" y="138" width="7" height="18" rx="3" fill="#0E3F2C"/>
+          </svg></div>
+        </div>
+      </div>
+
+      <div class="grow-grid">
+        <div class="phase" data-reveal style="--d:.04s">
+          <span class="pnum">01</span>
+          <h3>Plant</h3>
+          <span class="sub">Roots</span>
+          <p>We shape what the brand is — name, story, identity, and the strategy that holds everything up.</p>
+        </div>
+        <div class="phase" data-reveal style="--d:.12s">
+          <span class="pnum">02</span>
+          <h3>Nurture</h3>
+          <span class="sub">Reach</span>
+          <p>We give it light and water — content, social, and campaigns that earn real attention.</p>
+        </div>
+        <div class="phase" data-reveal style="--d:.2s">
+          <span class="pnum">03</span>
+          <h3>Flourish</h3>
+          <span class="sub">Yield</span>
+          <p>We turn attention into growth — performance, optimization, and loyalty that compounds.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ===== capabilities ===== -->
+  <section class="section cap" aria-label="Capabilities">
+    <div class="container">
+      <div class="head">
+        <span class="eyebrow" data-reveal>What we cultivate</span>
+        <h2 class="h2" data-reveal style="--d:.06s">Everything a brand needs to grow — under one roof.</h2>
+      </div>
+      <div class="cap-grid">
+        <div class="cell" data-reveal>
+          <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
+          <h3>Brand &amp; Identity</h3>
+          <p>Naming, logo, visual systems, and the voice that ties them together.</p>
+        </div>
+        <div class="cell" data-reveal style="--d:.05s">
+          <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-7h6v7"/></svg>
+          <h3>Strategy &amp; Positioning</h3>
+          <p>The market, the message, and the plan that gives growth a direction.</p>
+        </div>
+        <div class="cell" data-reveal style="--d:.1s">
+          <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>
+          <h3>Content &amp; Social</h3>
+          <p>Day-to-day presence that builds an audience worth having.</p>
+        </div>
+        <div class="cell" data-reveal style="--d:.04s">
+          <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"/></svg>
+          <h3>Film &amp; Photography</h3>
+          <p>In-house production, from first frame to final cut.</p>
+        </div>
+        <div class="cell" data-reveal style="--d:.09s">
+          <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+          <h3>Performance &amp; Ads</h3>
+          <p>Meta, Google, and paid media engineered to pay back.</p>
+        </div>
+        <div class="cell" data-reveal style="--d:.14s">
+          <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 21h8"/></svg>
+          <h3>Web &amp; Growth Tech</h3>
+          <p>Sites, funnels, CRM, and analytics that turn clicks into clients.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ===== industries ===== -->
+  <section class="section ind" aria-label="Industries we serve">
+    <div class="container">
+      <div class="head">
+        <span class="eyebrow" data-reveal>Who we plant for</span>
+        <h2 class="h2" data-reveal style="--d:.06s">Made for businesses outside the obvious.</h2>
+      </div>
+      <div class="ind-list">
+        <div class="ind-row" data-reveal><span class="n">01</span><span class="name">Real Estate</span></div>
+        <div class="ind-row" data-reveal style="--d:.05s"><span class="n">02</span><span class="name">Hospitality &amp; Food</span></div>
+        <div class="ind-row" data-reveal style="--d:.1s"><span class="n">03</span><span class="name">Retail &amp; E-commerce</span></div>
+        <div class="ind-row" data-reveal style="--d:.15s"><span class="n">04</span><span class="name">Professional Services</span></div>
+        <div class="ind-row" data-reveal style="--d:.2s"><span class="n">05</span><span class="name">National &amp; Emerging Brands</span></div>
+      </div>
+      <div class="seedling" data-reveal>
+        <svg viewBox="0 0 64 84" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M32 80 L32 50" stroke="#E7C079" stroke-width="3" stroke-linecap="round"/>
+          <path d="M32 58 C23 56 18 48 18 40 C28 41 32 49 32 58 Z" fill="#D69A2D"/>
+          <path d="M32 53 C41 51 46 43 46 35 C36 36 32 44 32 53 Z" fill="#E7C079"/>
+          <circle cx="32" cy="80" r="4" fill="#D69A2D"/>
+        </svg>
+        <span class="t">Now planting — <b>Maxx &amp; Afi</b>, a Toronto real estate team. The first in the garden.</span>
+        <span class="pill">Inaugural client</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ===== name / story ===== -->
+  <section class="section name" aria-label="About the name">
+    <div class="name-grid">
+      <div class="name-copy">
+        <span class="eyebrow" data-reveal>The name</span>
+        <h2 class="h2" data-reveal style="--d:.05s">Boostan reads three&nbsp;ways.</h2>
+        <p data-reveal style="--d:.1s">In English, a <em>boost</em>. In Persian, <span class="fa-word" lang="fa" dir="rtl">بوستان</span> — a garden, an orchard. And to those who know it, Saadi's 1257 masterwork, written as the companion to the <em>Divan</em>. A house of brands rooted in the same canon.</p>
+        <p data-reveal style="--d:.15s">Our mark is the cypress — <span class="fa-word" lang="fa" dir="rtl">سرو</span> — the tree Persian poets gave to grace and endurance, the one that never bends. Our pattern is the <span class="fa-word" lang="fa" dir="rtl">چهارباغ</span>, the four-quartered paradise garden. Structure and growth, held together.</p>
+      </div>
+      <figure class="charbagh-fig" data-reveal style="--d:.1s">
+        <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="20" y="20" width="260" height="260" fill="none" stroke="#E7C079" stroke-width="1.2" opacity=".55"/>
+          <line x1="150" y1="20" x2="150" y2="280" stroke="#D69A2D" stroke-width="1.2" opacity=".7"/>
+          <line x1="20" y1="150" x2="280" y2="150" stroke="#D69A2D" stroke-width="1.2" opacity=".7"/>
+          <rect x="128" y="128" width="44" height="44" transform="rotate(45 150 150)" fill="none" stroke="#D69A2D" stroke-width="1.2"/>
+          <circle cx="150" cy="150" r="6" fill="#D69A2D"/>
+          <!-- a cypress in each quadrant -->
+          <g fill="#D69A2D" opacity=".9">
+            <path d="M85 95 C81 92 74 84 76 70 C78 56 82 48 85 40 C88 48 92 58 93 70 C94 84 88 92 85 95 Z"/>
+            <path d="M215 95 C211 92 204 84 206 70 C208 56 212 48 215 40 C218 48 222 58 223 70 C224 84 218 92 215 95 Z"/>
+            <path d="M85 260 C81 257 74 249 76 235 C78 221 82 213 85 205 C88 213 92 223 93 235 C94 249 88 257 85 260 Z"/>
+            <path d="M215 260 C211 257 204 249 206 235 C208 221 212 213 215 205 C218 213 222 223 223 235 C224 249 218 257 215 260 Z"/>
+          </g>
+        </svg>
+        <figcaption class="cap"><b>چهارباغ</b> — char (four) · bagh (garden)</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ===== promise ===== -->
+  <section class="section promise" aria-label="Our promise">
+    <div class="container">
+      <div class="head">
+        <span class="eyebrow" data-reveal>Our promise</span>
+        <h2 class="h2" data-reveal style="--d:.06s">New name. Not new hands.</h2>
+      </div>
+      <div class="prom-grid">
+        <div class="prom" data-reveal><span class="num">i</span><div><h3>One team, start to finish</h3><p>No handoffs to subcontractors. The people you meet are the people who do the work.</p></div></div>
+        <div class="prom" data-reveal style="--d:.06s"><span class="num">ii</span><div><h3>Senior hands on every project</h3><p>Experienced people on your account — not juniors learning on your budget.</p></div></div>
+        <div class="prom" data-reveal style="--d:.06s"><span class="num">iii</span><div><h3>Backed by Divan Group</h3><p>A decade of brand and growth craft standing behind the new name.</p></div></div>
+        <div class="prom" data-reveal style="--d:.12s"><span class="num">iv</span><div><h3>A reply by the next day</h3><p>You'll hear back by the next business day. Every time, no exceptions.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ===== final CTA ===== -->
+  <section class="section cta-band" aria-label="Get notified" id="notify-2">
+    <div class="container">
+      <div class="emblem" aria-hidden="true">
+        <svg viewBox="0 0 120 168" xmlns="http://www.w3.org/2000/svg">
+          <path d="M60 126 C50 121 31 105 35 78 C38 51 49 31 62 14 C75 31 84 54 86 80 C88 107 71 121 64 126 Z" fill="#D69A2D"/>
+          <path d="M60 124 C58 99 60 60 62 22" fill="none" stroke="#0E3F2C" stroke-width="3.4" stroke-linecap="round" opacity=".55"/>
+          <rect x="56" y="120" width="8" height="32" rx="3" fill="#0E3F2C"/>
+        </svg>
+      </div>
+      <h2 data-reveal>Something is taking root.</h2>
+      <p class="lead" data-reveal style="--d:.06s">Be first to know when Boostan opens its gates.</p>
+      <div class="signup" data-reveal style="--d:.1s">
+        <form class="notify" novalidate>
+          <input type="text" class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="row">
+            <input type="email" class="email" name="email" placeholder="Your email" required autocomplete="email" aria-label="Email address">
+            <button type="submit" class="btn btn-gold submit">Notify me</button>
+          </div>
+          <p class="form-msg" role="status" aria-live="polite"></p>
+        </form>
+        <p class="micro">No spam. Just one note when we launch. 🌿</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== footer ===== -->
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <a class="brand" href="#top" aria-label="Boostan Group">
+        <svg viewBox="0 0 120 168" xmlns="http://www.w3.org/2000/svg"><path d="M60 126 C50 121 31 105 35 78 C38 51 49 31 62 14 C75 31 84 54 86 80 C88 107 71 121 64 126 Z" fill="#D69A2D"/><rect x="56" y="120" width="8" height="30" rx="3" fill="#0E3F2C"/></svg>
+        <span class="wm">BOOSTAN <b>GROUP</b></span>
+      </a>
+      <span class="fa" lang="fa" dir="rtl">بِکار. بپرور. شکوفا کن.</span>
+      <p>A brand &amp; growth studio for ambitious businesses. Toronto, Canada.</p>
+    </div>
+    <div class="foot-right">
+      <a class="parent" href="https://www.divangroup.ca" target="_blank" rel="noopener">Part of the Divan Group family →</a>
+      <span class="copy">© 2026 Boostan Group · Toronto · Coming 2026</span>
     </div>
   </div>
+</footer>
+
 <script>
 (function(){
-  var form = document.getElementById('notify');
-  var btn  = document.getElementById('notifyBtn');
-  var ty   = document.getElementById('ty');
-  var err  = document.getElementById('err');
-  var emailEl = document.getElementById('email');
-  var hpEl    = document.getElementById('website');
+  // nav solid on scroll
+  var nav=document.getElementById('nav');
+  function onScroll(){ nav.classList.toggle('solid', window.scrollY>24); }
+  onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
 
-  function showErr(m){ err.textContent = m; err.style.display = 'block'; }
-  function clearErr(){ err.style.display = 'none'; err.textContent = ''; }
+  // scroll reveal
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var nodes = document.querySelectorAll('[data-reveal]');
+  if(reduce || !('IntersectionObserver' in window)){
+    nodes.forEach(function(n){ n.classList.add('in'); });
+  } else {
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+    },{threshold:.12, rootMargin:'0px 0px -7% 0px'});
+    nodes.forEach(function(n){ io.observe(n); });
+  }
 
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    clearErr();
-
-    var email = (emailEl.value || '').trim();
-    var website = (hpEl.value || '').trim();
-
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
-      showErr('Please enter a valid email address.');
-      return;
-    }
-
-    var label = btn.textContent;
-    btn.disabled = true;
-    btn.textContent = 'Sending…';
-
-    fetch('/api/notify', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, website: website })
-    })
-    .then(function(resp){
-      return resp.json().catch(function(){ return {}; }).then(function(data){
-        return { ok: resp.ok, data: data };
-      });
-    })
-    .then(function(r){
-      if(!r.ok){
-        btn.disabled = false; btn.textContent = label;
-        showErr((r.data && r.data.error) || 'Something went wrong. Please try again.');
-        return;
-      }
-      form.style.display = 'none';
-      ty.style.display = 'block';
-    })
-    .catch(function(){
-      btn.disabled = false; btn.textContent = label;
-      showErr('Connection issue. Please try again in a moment.');
+  // notify forms (handles every instance on the page)
+  document.querySelectorAll('form.notify').forEach(function(form){
+    var row=form.querySelector('.row');
+    var btn=form.querySelector('.submit');
+    var email=form.querySelector('.email');
+    var hp=form.querySelector('.hp');
+    var msg=form.querySelector('.form-msg');
+    function setMsg(text,kind){ msg.textContent=text; msg.className='form-msg show '+(kind||''); }
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      msg.className='form-msg';
+      var val=(email.value||'').trim();
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)){ setMsg('Enter a valid email address.','err'); return; }
+      var label=btn.textContent; btn.disabled=true; btn.textContent='Sending…';
+      fetch('/api/notify',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({email:val, website:(hp.value||'').trim()})
+      })
+      .then(function(resp){ return resp.json().catch(function(){return {};}).then(function(data){ return {ok:resp.ok, data:data}; }); })
+      .then(function(r){
+        if(!r.ok){ btn.disabled=false; btn.textContent=label; setMsg((r.data&&r.data.error)||'Something went wrong. Please try again.','err'); return; }
+        if(row) row.style.display='none';
+        setMsg('Thank you — you’re on the list. We’ll be in touch when the gates open. 🌿','ok');
+      })
+      .catch(function(){ btn.disabled=false; btn.textContent=label; setMsg('Connection issue. Please try again in a moment.','err'); });
     });
   });
 })();
