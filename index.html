@@ -69,6 +69,8 @@
   .micro{margin-top:12px;font-family:'Hanken Grotesk',sans-serif;font-size:12px;
     letter-spacing:.03em;color:rgba(244,238,226,.4)}
   .thanks{display:none;font-family:'Hanken Grotesk',sans-serif;font-size:15px;color:var(--gold2);padding:14px}
+  .err{display:none;font-family:'Hanken Grotesk',sans-serif;font-size:12.5px;color:#F0B8A8;margin-top:10px}
+  .signup button:disabled{opacity:.7;cursor:default;transform:none}
 
   /* footer */
   .foot{opacity:0;animation:rise 1s ease 1.65s forwards;display:flex;flex-direction:column;gap:8px;align-items:center}
@@ -123,12 +125,15 @@
       <p class="line">Something new is taking root.</p>
 
       <div class="signup">
-        <!-- Replace YOUR_FORM_ID with your Formspree form ID (formspree.io → New Form) -->
-        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" onsubmit="setTimeout(()=>{this.style.display='none';document.getElementById('ty').style.display='block'},10)">
-          <input type="email" name="email" placeholder="Your email — be first to know" required>
-          <button type="submit">Notify me</button>
+        <form id="notify" novalidate>
+          <!-- honeypot: real visitors never see or fill this; bots do -->
+          <input type="text" name="website" id="website" tabindex="-1" autocomplete="off" aria-hidden="true"
+            style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
+          <input type="email" name="email" id="email" placeholder="Your email — be first to know" required autocomplete="email">
+          <button type="submit" id="notifyBtn">Notify me</button>
         </form>
         <div class="thanks" id="ty">Thank you — we'll be in touch when we open the gates. 🌿</div>
+        <p class="err" id="err"></p>
         <p class="micro">No spam. Just one note when we launch.</p>
       </div>
     </div>
@@ -138,5 +143,59 @@
       <div class="meta">Boostan Group · Toronto · 2026</div>
     </div>
   </div>
+<script>
+(function(){
+  var form = document.getElementById('notify');
+  var btn  = document.getElementById('notifyBtn');
+  var ty   = document.getElementById('ty');
+  var err  = document.getElementById('err');
+  var emailEl = document.getElementById('email');
+  var hpEl    = document.getElementById('website');
+
+  function showErr(m){ err.textContent = m; err.style.display = 'block'; }
+  function clearErr(){ err.style.display = 'none'; err.textContent = ''; }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    clearErr();
+
+    var email = (emailEl.value || '').trim();
+    var website = (hpEl.value || '').trim();
+
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+      showErr('Please enter a valid email address.');
+      return;
+    }
+
+    var label = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    fetch('/api/notify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, website: website })
+    })
+    .then(function(resp){
+      return resp.json().catch(function(){ return {}; }).then(function(data){
+        return { ok: resp.ok, data: data };
+      });
+    })
+    .then(function(r){
+      if(!r.ok){
+        btn.disabled = false; btn.textContent = label;
+        showErr((r.data && r.data.error) || 'Something went wrong. Please try again.');
+        return;
+      }
+      form.style.display = 'none';
+      ty.style.display = 'block';
+    })
+    .catch(function(){
+      btn.disabled = false; btn.textContent = label;
+      showErr('Connection issue. Please try again in a moment.');
+    });
+  });
+})();
+</script>
 </body>
 </html>
