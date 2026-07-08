@@ -25,10 +25,10 @@
   *{margin:0;padding:0;box-sizing:border-box}
   :root{
     --green:#0E3F2C; --green-2:#155A40; --deep:#0A2E20; --deep-3:#06180F;
-    --gold:#D69A2D; --gold-soft:#E7C079; --pom:#9C2A2A;
+    --gold:#F0C238; --gold-soft:#F4D474; --pom:#9C2A2A;
     --parch:#F4EEE2; --bark:#1C1A15;
     --ink:rgba(244,238,226,.82); --ink-dim:rgba(244,238,226,.56); --ink-faint:rgba(244,238,226,.34);
-    --hair:rgba(231,192,121,.20); --hair-2:rgba(231,192,121,.32);
+    --hair:rgba(244,212,116,.20); --hair-2:rgba(244,212,116,.32);
     --maxw:1180px; --pad:clamp(22px,5vw,56px);
     --sp:clamp(80px,12vw,156px);
   }
@@ -38,7 +38,7 @@
     background:var(--deep);overflow-x:hidden;line-height:1.65;
     -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
   }
-  ::selection{background:rgba(214,154,45,.3);color:var(--parch)}
+  ::selection{background:rgba(240,194,56,.3);color:var(--parch)}
   a{color:inherit;text-decoration:none}
   :focus-visible{outline:2px solid var(--gold-soft);outline-offset:3px;border-radius:4px}
 
@@ -49,7 +49,7 @@
       radial-gradient(120% 90% at 50% -10%, #16523A 0%, #0E3F2C 42%, #0A2E20 72%, #06180F 100%);}
   .bg .charbagh{position:absolute;inset:0;opacity:.05}
   .bg .glow{position:absolute;left:50%;top:0;width:min(90vw,1100px);height:90vh;transform:translateX(-50%);
-    background:radial-gradient(50% 42% at 50% 30%, rgba(214,154,45,.22) 0%, rgba(214,154,45,0) 70%);
+    background:radial-gradient(50% 42% at 50% 30%, rgba(240,194,56,.22) 0%, rgba(240,194,56,0) 70%);
     animation:breathe 9s ease-in-out infinite}
   .bg .grain{position:absolute;inset:0;opacity:.05;mix-blend-mode:soft-light}
 
@@ -73,14 +73,14 @@
   .btn{font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:14px;letter-spacing:.03em;
     border:none;cursor:pointer;border-radius:999px;padding:13px 26px;transition:transform .25s ease,background .25s ease,color .25s ease,box-shadow .25s ease;white-space:nowrap}
   .btn-gold{background:var(--gold);color:var(--green)}
-  .btn-gold:hover{background:var(--gold-soft);transform:translateY(-1px);box-shadow:0 10px 30px -12px rgba(214,154,45,.6)}
+  .btn-gold:hover{background:var(--gold-soft);transform:translateY(-1px);box-shadow:0 10px 30px -12px rgba(240,194,56,.6)}
   .btn-ghost{background:transparent;color:var(--parch);border:1px solid var(--hair-2)}
   .btn-ghost:hover{border-color:var(--gold-soft);color:var(--gold-soft)}
 
   /* ---------- nav ---------- */
   .nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .4s ease,backdrop-filter .4s ease,border-color .4s ease;
     border-bottom:1px solid transparent}
-  .nav.solid{background:rgba(8,30,21,.72);backdrop-filter:blur(14px);border-bottom-color:rgba(231,192,121,.14)}
+  .nav.solid{background:rgba(8,30,21,.72);backdrop-filter:blur(14px);border-bottom-color:rgba(244,212,116,.14)}
   .nav .row{max-width:var(--maxw);margin:0 auto;padding:16px var(--pad);display:flex;align-items:center;justify-content:space-between;gap:16px}
   .brand{display:flex;align-items:center;gap:11px}
   .brand svg{width:24px;height:auto;display:block}
@@ -100,7 +100,7 @@
   .hero-logo{display:flex;flex-direction:column;align-items:center;gap:10px;font-size:var(--logo-size,84px)}
   .hero-grp{font-family:'Hanken Grotesk',sans-serif;font-weight:600;font-size:clamp(11px,1.3vw,14px);letter-spacing:.52em;text-transform:uppercase;color:var(--ink-dim);padding-left:.52em}
   .hero-logo .leaf svg{transform-box:fill-box;transform-origin:50% 100%;animation:sway 6.5s ease-in-out infinite}
-  .leaf-mark svg{height:clamp(44px,6.5vw,62px);width:auto;filter:drop-shadow(0 8px 22px rgba(214,154,45,.42))}
+  .leaf-mark svg{width:clamp(88px,12vw,124px);height:auto;filter:drop-shadow(0 8px 22px rgba(240,194,56,.42))}
   @keyframes sway{0%,100%{transform:rotate(0)}50%{transform:rotate(-6deg)}}
 
   /* ---------- hero ---------- */
@@ -108,11 +108,11 @@
     padding:120px 0 64px;text-align:center}
   .hero .container{display:flex;flex-direction:column;align-items:center;gap:clamp(20px,3vw,30px)}
   .emblem{height:clamp(96px,13vw,150px)}
-  .emblem svg{height:100%;width:auto;filter:drop-shadow(0 8px 30px rgba(214,154,45,.42))}
+  .emblem svg{height:100%;width:auto;filter:drop-shadow(0 8px 30px rgba(240,194,56,.42))}
   .hero h1{font-size:clamp(26px,3.8vw,52px);letter-spacing:-.02em;max-width:20ch;font-weight:300}
   .hero .lead{text-align:center;color:var(--ink);max-width:60ch;margin:0 auto}
   .whisper{display:flex;flex-direction:column;align-items:center;gap:4px;margin-top:2px}
-  .whisper .fa{font-family:'Markazi Text',serif;font-weight:600;font-size:clamp(22px,3vw,30px);color:rgba(231,192,121,.7);direction:rtl}
+  .whisper .fa{font-family:'Markazi Text',serif;font-weight:600;font-size:clamp(22px,3vw,30px);color:rgba(244,212,116,.7);direction:rtl}
   .whisper .en{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--ink-faint)}
 
   /* ---------- signup (reusable) ---------- */
@@ -120,7 +120,7 @@
   .signup .label{font-size:13px;letter-spacing:.02em;color:var(--ink-dim);margin-bottom:12px}
   form.notify .row{display:flex;gap:9px;background:rgba(244,238,226,.05);
     border:1px solid var(--hair-2);border-radius:999px;padding:7px 7px 7px 22px;transition:border-color .3s ease}
-  form.notify .row:focus-within{border-color:rgba(231,192,121,.5)}
+  form.notify .row:focus-within{border-color:rgba(244,212,116,.5)}
   form.notify .email{flex:1;min-width:0;background:transparent;border:none;outline:none;color:var(--parch);
     font-family:'Hanken Grotesk',sans-serif;font-size:15px}
   form.notify .email::placeholder{color:rgba(244,238,226,.4)}
@@ -143,10 +143,10 @@
   .grow-band .ground{position:absolute;left:0;right:0;bottom:18px;height:1px;
     background:linear-gradient(to right,transparent,var(--gold) 14%,var(--gold) 86%,transparent);opacity:.5}
   .grow-band .node{position:absolute;bottom:14px;width:9px;height:9px;border-radius:50%;background:var(--gold);
-    box-shadow:0 0 14px 2px rgba(214,154,45,.5)}
+    box-shadow:0 0 14px 2px rgba(240,194,56,.5)}
   .grow-band .glyphs{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:space-around;padding:0 6%}
   .grow-band .glyphs > div{display:flex;align-items:flex-end;justify-content:center;flex:1}
-  .grow-band svg{width:auto;display:block;filter:drop-shadow(0 6px 16px rgba(214,154,45,.3))}
+  .grow-band svg{width:auto;display:block;filter:drop-shadow(0 6px 16px rgba(240,194,56,.3))}
   .g1 svg{height:42px}.g2 svg{height:74px}.g3 svg{height:104px}
 
   .grow-grid{max-width:var(--maxw);margin:clamp(24px,3vw,36px) auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,40px)}
@@ -160,7 +160,7 @@
   .cap .head{display:flex;flex-direction:column;gap:16px;margin-bottom:clamp(36px,5vw,56px);max-width:34ch}
   .cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--hair);border:1px solid var(--hair);border-radius:18px;overflow:hidden}
   .cell{background:linear-gradient(180deg,rgba(244,238,226,.025),rgba(244,238,226,.01));padding:clamp(24px,3vw,34px);min-height:178px;display:flex;flex-direction:column;gap:12px;transition:background .35s ease}
-  .cell:hover{background:linear-gradient(180deg,rgba(231,192,121,.08),rgba(231,192,121,.02))}
+  .cell:hover{background:linear-gradient(180deg,rgba(244,212,116,.08),rgba(244,212,116,.02))}
   .cell .ci{width:30px;height:30px;color:var(--gold)}
   .cell h3{font-size:20px;font-weight:400}
   .cell p{font-size:14px;color:var(--ink-dim)}
@@ -175,7 +175,7 @@
   .ind-row .name{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(22px,3vw,34px);color:var(--parch);flex:1}
   .ind-row .desc{font-size:13.5px;color:var(--ink-faint);text-align:right;max-width:30ch;display:none}
   .seedling{margin:clamp(36px,5vw,56px) auto 0;max-width:880px;display:flex;align-items:center;gap:16px;justify-content:center;
-    padding:18px 24px;border:1px solid var(--hair-2);border-radius:999px;background:rgba(214,154,45,.05)}
+    padding:18px 24px;border:1px solid var(--hair-2);border-radius:999px;background:rgba(240,194,56,.05)}
   .seedling svg{height:30px;flex-shrink:0}
   .seedling .t{font-size:14.5px;color:var(--ink)}
   .seedling .t b{color:var(--gold-soft);font-weight:600}
@@ -214,7 +214,7 @@
   .foot-brand{display:flex;flex-direction:column;gap:14px;max-width:320px}
   .foot-brand .brand svg{width:30px}
   .foot-brand .brand .wm{font-size:16px;letter-spacing:.18em}
-  .foot-brand .fa{font-family:'Markazi Text',serif;font-weight:600;font-size:21px;color:rgba(231,192,121,.6);direction:rtl}
+  .foot-brand .fa{font-family:'Markazi Text',serif;font-weight:600;font-size:21px;color:rgba(244,212,116,.6);direction:rtl}
   .foot-brand p{font-size:13px;color:var(--ink-faint);line-height:1.6}
   .foot-right{display:flex;flex-direction:column;gap:10px;text-align:right}
   .foot-right a.parent{font-size:14px;color:var(--ink);border-bottom:1px solid var(--hair-2);padding-bottom:3px;align-self:flex-end;transition:color .3s ease,border-color .3s ease}
@@ -265,7 +265,7 @@
   <div class="grad"></div>
   <svg class="charbagh" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
     <defs><pattern id="cb" width="96" height="96" patternUnits="userSpaceOnUse">
-      <g fill="none" stroke="#E7C079" stroke-width="1">
+      <g fill="none" stroke="#F4D474" stroke-width="1">
         <rect x="12" y="12" width="72" height="72"/>
         <line x1="48" y1="12" x2="48" y2="84"/><line x1="12" y1="48" x2="84" y2="48"/>
         <path d="M48 30 L66 48 L48 66 L30 48 Z"/>
@@ -284,7 +284,7 @@
 <header class="nav" id="nav">
   <div class="row">
     <a class="lockup" href="#top" aria-label="Boostan Group home" style="--logo-size:22px;color:var(--parch)">
-      <span class="logo"><span class="wm-b">boost</span><span class="leaf"><svg viewBox="0 0 44 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g transform="rotate(18 22 32)"><path d="M22 4 C34 18 34 40 22 60 C10 40 10 18 22 4 Z" fill="#D69A2D"/><path d="M22 9 L22 55" fill="none" stroke="#0E3F2C" stroke-width="2.2" stroke-linecap="round" opacity=".8"/></g></svg></span><span class="wm-a">an</span></span>
+      <img class="logo-img" src="/boostan-logo-light.png" alt="boostan" style="height:1.15em;width:auto;display:block" />
       <span class="grp">Group</span>
     </a>
     <div class="cta">
@@ -301,7 +301,7 @@
     <div class="container">
       <span class="eyebrow hl d1">Coming 2026 · A Divan Group company</span>
       <div class="hero-logo hl d2" aria-label="Boostan Group" style="--logo-size:clamp(54px,9.5vw,116px);color:var(--parch)">
-        <span class="logo"><span class="wm-b">boost</span><span class="leaf"><svg viewBox="0 0 44 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g transform="rotate(18 22 32)"><path d="M22 4 C34 18 34 40 22 60 C10 40 10 18 22 4 Z" fill="#D69A2D"/><path d="M22 9 L22 55" fill="none" stroke="#0E3F2C" stroke-width="2.2" stroke-linecap="round" opacity=".82"/></g></svg></span><span class="wm-a">an</span></span>
+        <img class="logo-img" src="/boostan-logo-light.png" alt="boostan" style="height:1.15em;width:auto;display:block" />
         <span class="hero-grp">Group</span>
       </div>
       <h1 class="hl d3">We help ambitious brands take root — and <span class="fr-i">rise</span>.</h1>
@@ -353,19 +353,19 @@
           <!-- 1 · sprout -->
           <div class="g1"><svg viewBox="0 0 64 84" xmlns="http://www.w3.org/2000/svg">
             <path d="M32 80 L32 50" stroke="#0E3F2C" stroke-width="3" stroke-linecap="round"/>
-            <path d="M32 58 C23 56 18 48 18 40 C28 41 32 49 32 58 Z" fill="#D69A2D"/>
-            <path d="M32 53 C41 51 46 43 46 35 C36 36 32 44 32 53 Z" fill="#E7C079"/>
-            <circle cx="32" cy="80" r="4" fill="#D69A2D"/>
+            <path d="M32 58 C23 56 18 48 18 40 C28 41 32 49 32 58 Z" fill="#F0C238"/>
+            <path d="M32 53 C41 51 46 43 46 35 C36 36 32 44 32 53 Z" fill="#F4D474"/>
+            <circle cx="32" cy="80" r="4" fill="#F0C238"/>
           </svg></div>
           <!-- 2 · sapling -->
           <div class="g2"><svg viewBox="0 0 64 116" xmlns="http://www.w3.org/2000/svg">
-            <path d="M32 104 C25 100 12 86 15 60 C18 38 25 24 32 10 C39 24 46 40 48 62 C50 86 38 100 35 104 Z" fill="#D69A2D"/>
+            <path d="M32 104 C25 100 12 86 15 60 C18 38 25 24 32 10 C39 24 46 40 48 62 C50 86 38 100 35 104 Z" fill="#F0C238"/>
             <path d="M32 102 C30 76 32 42 33 16" fill="none" stroke="#0E3F2C" stroke-width="2.6" stroke-linecap="round" opacity=".5"/>
             <rect x="29" y="100" width="6" height="14" rx="2.5" fill="#0E3F2C"/>
           </svg></div>
           <!-- 3 · cypress -->
           <div class="g3"><svg viewBox="0 0 64 156" xmlns="http://www.w3.org/2000/svg">
-            <path d="M32 142 C24 136 9 116 13 78 C17 46 24 28 32 8 C40 28 47 50 49 80 C51 118 39 136 35 142 Z" fill="#D69A2D"/>
+            <path d="M32 142 C24 136 9 116 13 78 C17 46 24 28 32 8 C40 28 47 50 49 80 C51 118 39 136 35 142 Z" fill="#F0C238"/>
             <path d="M32 140 C30 104 32 56 33 14" fill="none" stroke="#0E3F2C" stroke-width="2.8" stroke-linecap="round" opacity=".5"/>
             <rect x="28.5" y="138" width="7" height="18" rx="3" fill="#0E3F2C"/>
           </svg></div>
@@ -457,10 +457,10 @@
       </div>
       <div class="seedling" data-reveal>
         <svg viewBox="0 0 64 84" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M32 80 L32 50" stroke="#E7C079" stroke-width="3" stroke-linecap="round"/>
-          <path d="M32 58 C23 56 18 48 18 40 C28 41 32 49 32 58 Z" fill="#D69A2D"/>
-          <path d="M32 53 C41 51 46 43 46 35 C36 36 32 44 32 53 Z" fill="#E7C079"/>
-          <circle cx="32" cy="80" r="4" fill="#D69A2D"/>
+          <path d="M32 80 L32 50" stroke="#F4D474" stroke-width="3" stroke-linecap="round"/>
+          <path d="M32 58 C23 56 18 48 18 40 C28 41 32 49 32 58 Z" fill="#F0C238"/>
+          <path d="M32 53 C41 51 46 43 46 35 C36 36 32 44 32 53 Z" fill="#F4D474"/>
+          <circle cx="32" cy="80" r="4" fill="#F0C238"/>
         </svg>
         <span class="t">Now planting — <b>Maxx &amp; Afi</b>, a Toronto real estate team. The first in the garden.</span>
         <span class="pill">Inaugural client</span>
@@ -481,13 +481,13 @@
       </div>
       <figure class="charbagh-fig" data-reveal style="--d:.1s">
         <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="20" y="20" width="260" height="260" fill="none" stroke="#E7C079" stroke-width="1.2" opacity=".55"/>
-          <line x1="150" y1="20" x2="150" y2="280" stroke="#D69A2D" stroke-width="1.2" opacity=".7"/>
-          <line x1="20" y1="150" x2="280" y2="150" stroke="#D69A2D" stroke-width="1.2" opacity=".7"/>
-          <rect x="128" y="128" width="44" height="44" transform="rotate(45 150 150)" fill="none" stroke="#D69A2D" stroke-width="1.2"/>
-          <circle cx="150" cy="150" r="6" fill="#D69A2D"/>
+          <rect x="20" y="20" width="260" height="260" fill="none" stroke="#F4D474" stroke-width="1.2" opacity=".55"/>
+          <line x1="150" y1="20" x2="150" y2="280" stroke="#F0C238" stroke-width="1.2" opacity=".7"/>
+          <line x1="20" y1="150" x2="280" y2="150" stroke="#F0C238" stroke-width="1.2" opacity=".7"/>
+          <rect x="128" y="128" width="44" height="44" transform="rotate(45 150 150)" fill="none" stroke="#F0C238" stroke-width="1.2"/>
+          <circle cx="150" cy="150" r="6" fill="#F0C238"/>
           <!-- a cypress in each quadrant -->
-          <g fill="#D69A2D" opacity=".9">
+          <g fill="#F0C238" opacity=".9">
             <path d="M85 95 C81 92 74 84 76 70 C78 56 82 48 85 40 C88 48 92 58 93 70 C94 84 88 92 85 95 Z"/>
             <path d="M215 95 C211 92 204 84 206 70 C208 56 212 48 215 40 C218 48 222 58 223 70 C224 84 218 92 215 95 Z"/>
             <path d="M85 260 C81 257 74 249 76 235 C78 221 82 213 85 205 C88 213 92 223 93 235 C94 249 88 257 85 260 Z"/>
@@ -523,7 +523,7 @@
   <section class="section cta-band" aria-label="Get notified" id="notify-2">
     <div class="container">
       <div class="leaf-mark" aria-hidden="true">
-        <svg viewBox="0 0 44 64" xmlns="http://www.w3.org/2000/svg"><g transform="rotate(18 22 32)"><path d="M22 4 C34 18 34 40 22 60 C10 40 10 18 22 4 Z" fill="#D69A2D"/><path d="M22 9 L22 55" fill="none" stroke="#0E3F2C" stroke-width="2.2" stroke-linecap="round" opacity=".82"/></g></svg>
+        <svg viewBox="0 0 100 46" xmlns="http://www.w3.org/2000/svg"><path d="M50 23 C43 10 26 10 26 23 C26 36 43 36 50 23 C57 10 74 10 74 23 C74 36 57 36 50 23" fill="none" stroke="#F0C238" stroke-width="7" stroke-linecap="round"/></svg>
       </div>
       <h2 data-reveal>Something is taking root.</h2>
       <p class="lead" data-reveal style="--d:.06s">Be first to know when Boostan opens its gates.</p>
@@ -548,7 +548,7 @@
   <div class="foot-grid">
     <div class="foot-brand">
       <a class="lockup" href="#top" aria-label="Boostan Group" style="--logo-size:27px;color:var(--parch)">
-        <span class="logo"><span class="wm-b">boost</span><span class="leaf"><svg viewBox="0 0 44 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g transform="rotate(18 22 32)"><path d="M22 4 C34 18 34 40 22 60 C10 40 10 18 22 4 Z" fill="#D69A2D"/><path d="M22 9 L22 55" fill="none" stroke="#0E3F2C" stroke-width="2.2" stroke-linecap="round" opacity=".8"/></g></svg></span><span class="wm-a">an</span></span>
+        <img class="logo-img" src="/boostan-logo-light.png" alt="boostan" style="height:1.15em;width:auto;display:block" />
         <span class="grp">Group</span>
       </a>
       <span class="fa" lang="fa" dir="rtl">بِکار. بپرور. شکوفا کن.</span>
