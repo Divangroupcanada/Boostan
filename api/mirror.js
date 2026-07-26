@@ -3,10 +3,34 @@
 const UPSTREAM = 'https://www.divangroup.ca';
 
 const HEX = [
+  // stock tailwind -> boostan ramps (purple/blue/cyan/sky/indigo/teal -> greens; pink/rose/fuchsia/amber/yellow -> saffron golds)
+  ['A855F7','1F7A57'],['9333EA','155A40'],['7E22CE','0F412E'],['C084FC','2FA474'],['E9D5FF','B8E6CF'],
+  ['D946EF','E3B22B'],['E879F9','F0C238'],['F0ABFC','F4D474'],
+  ['6366F1','1F7A57'],['818CF8','2FA474'],['A5B4FC','8FD9B8'],['C7D2FE','B8E6CF'],
+  ['3B82F6','1F7A57'],['60A5FA','2FA474'],['2563EB','155A40'],['93C5FD','8FD9B8'],['BAE6FD','B8E6CF'],
+  ['06B6D4','1F7A57'],['22D3EE','2FA474'],['67E8F9','8FD9B8'],['0891B2','155A40'],
+  ['0EA5E9','1F7A57'],['38BDF8','2FA474'],['7DD3FC','8FD9B8'],
+  ['14B8A6','1F7A57'],['2DD4BF','2FA474'],['5EEAD4','8FD9B8'],['0D9488','155A40'],
+  ['EC4899','E3B22B'],['F472B6','F0C238'],['F9A8D4','F4D474'],['DB2777','C99A1F'],
+  ['F43F5E','C99A1F'],['FB7185','E3B22B'],['FDA4AF','F4D474'],['FECDD3','F8E4B0'],
+  ['F59E0B','F0C238'],['FBBF24','F0C238'],['FCD34D','F4D474'],['D97706','D9A81F'],['B45309','B8862B'],['FDE68A','F8E4B0'],
+  ['FACC15','F0C238'],['EAB308','E3B22B'],
   ['0B6B8C','155A40'],['1A87AC','1F7A57'],['6B1E5C','9C2A2A'],['892676','B83B3B'],
   ['C9A227','F0C238'],['993C1D','A85A28'],['1A1A1A','1C1A15'],['0A0A0A','0C0B08'],
 ];
 const RGB = [
+  ['168 85 247','31 122 87'],['168,85,247','31,122,87'],['147 51 234','21 90 64'],['147,51,234','21,90,64'],
+  ['192 132 252','47 164 116'],['126 34 206','15 65 46'],['59 7 100','8 30 21'],['233 213 255','184 230 207'],
+  ['217 70 239','227 178 43'],['232 121 249','240 194 56'],['240 171 252','244 212 116'],['245 208 254','248 228 176'],
+  ['99 102 241','31 122 87'],['129 140 248','47 164 116'],['165 180 252','143 217 184'],['199 210 254','184 230 207'],
+  ['59 130 246','31 122 87'],['96 165 250','47 164 116'],['37 99 235','21 90 64'],['23 37 84','10 35 25'],['186 230 253','184 230 207'],
+  ['6 182 212','31 122 87'],['34 211 238','47 164 116'],['103 232 249','143 217 184'],['8 145 178','21 90 64'],
+  ['14 165 233','31 122 87'],['56 189 248','47 164 116'],['125 211 252','143 217 184'],
+  ['20 184 166','31 122 87'],['45 212 191','47 164 116'],['94 234 212','143 217 184'],['13 148 136','21 90 64'],
+  ['236 72 153','227 178 43'],['244 114 182','240 194 56'],['249 168 212','244 212 116'],['219 39 119','201 154 31'],
+  ['244 63 94','201 154 31'],['251 113 133','227 178 43'],['253 164 175','244 212 116'],['254 205 211','248 228 176'],
+  ['245 158 11','240 194 56'],['251 191 36','240 194 56'],['252 211 77','244 212 116'],['253 230 138','248 228 176'],
+  ['250 204 21','240 194 56'],['234 179 8','227 178 43'],['217 119 6','217 168 31'],['120 53 15','122 88 26'],
   ['11 107 140','21 90 64'],['11,107,140','21,90,64'],
   ['26 135 172','31 122 87'],['26,135,172','31,122,87'],
   ['107 30 92','156 42 42'],['107,30,92','156,42,42'],
@@ -18,6 +42,12 @@ const RGB = [
 // real client/case-study names must survive untouched
 const PROTECT = ['Muchin Beauty Clinic','Muchin Beauty'];
 const STR = [
+  // slogan
+  ['Discipline. Consistency. Creativity.','Plant. Nurture. Flourish.'],
+  ['Discipline. Consistency. Creativity','Plant. Nurture. Flourish'],
+  ['Discipline · Consistency · Creativity','Plant · Nurture · Flourish'],
+  ['Discipline, Consistency, Creativity','Plant, Nurture, Flourish'],
+  ['Discipline &middot; Consistency &middot; Creativity','Plant &middot; Nurture &middot; Flourish'],
   // urls & handles
   ['www.divangroup.ca','www.boostangroup.com'],
   ['divangroup.ca','boostangroup.com'],
@@ -114,6 +144,8 @@ module.exports = async (req, res) => {
       if (ct.includes('html')) {
         text = text.replace('<link rel="icon" type="image/x-icon" href="/favicon.ico" />',
                             '<link rel="icon" type="image/svg+xml" href="/favicon.svg" />');
+        const patch = `\n<style>video[autoplay],video[muted]{display:none!important}</style>\n<script>(function(){var fix=function(){document.querySelectorAll('video').forEach(function(v){if(v.autoplay||v.muted){try{v.pause();v.remove();}catch(e){}}});document.querySelectorAll('img[src*="logo" i]').forEach(function(i){if(i.dataset.bfx)return;i.dataset.bfx='1';i.src='/logo.png';i.srcset='';});};new MutationObserver(fix).observe(document.documentElement,{childList:true,subtree:true});document.addEventListener('DOMContentLoaded',fix);setInterval(fix,700);})();<\/script>\n</head>`;
+        text = text.replace('</head>', patch);
       }
       res.end(text);
     } else {
