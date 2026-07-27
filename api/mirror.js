@@ -144,7 +144,20 @@ module.exports = async (req, res) => {
       if (ct.includes('html')) {
         text = text.replace('<link rel="icon" type="image/x-icon" href="/favicon.ico" />',
                             '<link rel="icon" type="image/svg+xml" href="/favicon.svg" />');
-        const patch = `\n<style>video[autoplay],video[muted]{display:none!important}</style>\n<script>(function(){var fix=function(){document.querySelectorAll('video').forEach(function(v){if(v.autoplay||v.muted){try{v.pause();v.remove();}catch(e){}}});document.querySelectorAll('img[src*="logo" i]').forEach(function(i){if(i.dataset.bfx)return;i.dataset.bfx='1';i.src='/logo.png';i.srcset='';});};new MutationObserver(fix).observe(document.documentElement,{childList:true,subtree:true});document.addEventListener('DOMContentLoaded',fix);setInterval(fix,700);})();<\/script>\n</head>`;
+        const patch = `
+<style>video[autoplay],video[muted]{display:none!important}
+.bfx-inf{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(48vw,470px);max-width:82%;pointer-events:none;z-index:3;animation:bfxFloat 7s ease-in-out infinite alternate;filter:drop-shadow(0 0 34px rgba(240,194,56,.35))}
+@keyframes bfxFloat{from{transform:translate(-50%,-52%) scale(.985)}to{transform:translate(-50%,-48%) scale(1.015)}}
+@media (prefers-reduced-motion:reduce){.bfx-inf{animation:none}}</style>
+<script>(function(){
+function seed(host){if(!host||host.querySelector('.bfx-inf'))return;var cs=getComputedStyle(host);if(cs.position==='static')host.style.position='relative';var img=document.createElement('img');img.src='/boostan-infinity-glow.png';img.alt='';img.className='bfx-inf';host.appendChild(img);}
+var fix=function(){
+document.querySelectorAll('video').forEach(function(v){if(v.autoplay||v.muted){var host=v.parentElement,r=v.getBoundingClientRect();try{v.pause();v.remove();}catch(e){}if(host&&r.top<innerHeight&&r.width>200)seed(host);}});
+document.querySelectorAll('canvas').forEach(function(c){var r=c.getBoundingClientRect();if(r.top<innerHeight*1.15&&r.width>150){var host=c.parentElement;try{c.remove();}catch(e){}seed(host);}});
+document.querySelectorAll('img[src*="logo" i]').forEach(function(i){if(i.dataset.bfx)return;i.dataset.bfx='1';i.src='/logo.png';i.srcset='';});
+};
+new MutationObserver(fix).observe(document.documentElement,{childList:true,subtree:true});document.addEventListener('DOMContentLoaded',fix);setInterval(fix,600);})();<\/script>
+</head>`;
         text = text.replace('</head>', patch);
       }
       res.end(text);
