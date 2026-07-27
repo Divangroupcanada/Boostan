@@ -146,11 +146,12 @@ module.exports = async (req, res) => {
                             '<link rel="icon" type="image/svg+xml" href="/favicon.svg" />');
         const patch = `
 <style>video[autoplay],video[muted]{display:none!important}
-.bfx-inf{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(48vw,470px);max-width:82%;pointer-events:none;z-index:3;animation:bfxFloat 7s ease-in-out infinite alternate;filter:drop-shadow(0 0 34px rgba(240,194,56,.35))}
-@keyframes bfxFloat{from{transform:translate(-50%,-52%) scale(.985)}to{transform:translate(-50%,-48%) scale(1.015)}}
+.bfx-inf{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(62vw,660px);max-width:88%;pointer-events:none;z-index:0;opacity:.26;animation:bfxFloat 9s ease-in-out infinite alternate;filter:drop-shadow(0 0 40px rgba(240,194,56,.22))}
+.bfx-amb{position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(44% 36% at 72% 18%,rgba(21,90,64,.40),transparent 70%),radial-gradient(38% 32% at 16% 80%,rgba(156,42,42,.15),transparent 70%),radial-gradient(30% 26% at 50% 58%,rgba(240,194,56,.08),transparent 72%)}
+@keyframes bfxFloat{from{transform:translate(-50%,-51%) scale(.99);opacity:.22}to{transform:translate(-50%,-49%) scale(1.01);opacity:.30}}
 @media (prefers-reduced-motion:reduce){.bfx-inf{animation:none}}</style>
 <script>(function(){
-function seed(host){if(!host||host.querySelector('.bfx-inf'))return;var cs=getComputedStyle(host);if(cs.position==='static')host.style.position='relative';var img=document.createElement('img');img.src='/boostan-infinity-glow.png';img.alt='';img.className='bfx-inf';host.appendChild(img);}
+function seed(host){if(!host||host.querySelector('.bfx-inf'))return;var cs=getComputedStyle(host);if(cs.position==='static')host.style.position='relative';var amb=document.createElement('div');amb.className='bfx-amb';host.appendChild(amb);var img=document.createElement('img');img.src='/boostan-infinity-glow.png';img.alt='';img.className='bfx-inf';host.appendChild(img);}
 var fix=function(){
 document.querySelectorAll('video').forEach(function(v){if(v.autoplay||v.muted){var r=v.getBoundingClientRect(),abs=r.top+(window.scrollY||0);if(abs<innerHeight*1.2){var host=v.parentElement;try{v.pause();v.remove();}catch(e){}if(host&&r.width>200)seed(host);}}});
 document.querySelectorAll('canvas').forEach(function(c){var r=c.getBoundingClientRect(),abs=r.top+(window.scrollY||0);if(abs<innerHeight*1.15&&r.width>150){var host=c.parentElement;try{c.remove();}catch(e){}seed(host);}});
