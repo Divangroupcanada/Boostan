@@ -64,6 +64,8 @@ const STR = [
   ['founded 2015','est. 2026 — same team since 2015'],
   ['founded in 2015','launched in 2026 by the team serving clients since 2015'],
   ['since 2015','since 2015 (under the Divan name)'],
+  ['Founded in Toronto in 2015','Launched in Toronto in 2026 by the team serving clients since 2015'],
+  ['دیوان','بوستان'],
   // multi-item lists first, to avoid doubled phrases
   ['cosmetic clinics, beauty businesses, hospitality groups','ambitious businesses, hospitality groups'],
   ['cosmetic clinics, AI SEO, GEO, beauty businesses','AI SEO, GEO, growing businesses'],
@@ -144,6 +146,8 @@ module.exports = async (req, res) => {
       if (ct.includes('html')) {
         text = text.replace('<link rel="icon" type="image/x-icon" href="/favicon.ico" />',
                             '<link rel="icon" type="image/svg+xml" href="/favicon.svg" />');
+        text = text.replace('"foundingDate": "2026",',
+          '"foundingDate": "2026", "parentOrganization": {"@type": "Organization", "name": "Divan Group", "url": "https://www.divangroup.ca"},');
         const patch = `
 <style>video[autoplay],video[muted]{display:none!important}
 .bfx-inf{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(62vw,660px);max-width:88%;pointer-events:none;z-index:0;opacity:.26;animation:bfxFloat 9s ease-in-out infinite alternate;filter:drop-shadow(0 0 40px rgba(240,194,56,.22))}
@@ -156,6 +160,9 @@ module.exports = async (req, res) => {
 .bfx-w3{background:linear-gradient(96deg,#F4D474,#F0C238);-webkit-background-clip:text;background-clip:text;color:transparent;animation-delay:.42s}
 @keyframes bfxUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
 .bfx-fa{direction:rtl;margin-top:.9rem;font-size:clamp(1rem,1.6vw,1.3rem);color:rgba(240,194,56,.9);letter-spacing:.01em;animation:bfxUp .9s cubic-bezier(.4,0,.2,1) .6s both}
+.bfx-sis{max-width:1100px;margin:1.4rem auto 0;padding:1.1rem 1.5rem 0;border-top:1px solid rgba(255,255,255,.09);color:rgba(244,238,226,.5);font-size:.85rem;line-height:1.6;text-align:center}
+.bfx-sis a{color:#3FA8CC;text-decoration:none}
+.bfx-cap{margin:.6rem 0 0;color:rgba(240,194,56,.78);font-size:.85rem;letter-spacing:.02em}
 @media (prefers-reduced-motion:reduce){.bfx-inf,.bfx-w,.bfx-fa{animation:none}.bfx-em{display:none}}</style>
 <script>(function(){
 function seed(host){if(!host||host.querySelector('.bfx-inf'))return;var cs=getComputedStyle(host);if(cs.position==='static')host.style.position='relative';var amb=document.createElement('div');amb.className='bfx-amb';host.appendChild(amb);var img=document.createElement('img');img.src='/boostan-infinity-glow.png';img.alt='';img.className='bfx-inf';host.appendChild(img);embers(host);}
@@ -165,6 +172,8 @@ document.querySelectorAll('button,a,span,div,p').forEach(function(el){if(el.chil
 document.querySelectorAll('video').forEach(function(v){if(v.autoplay||v.muted){var r=v.getBoundingClientRect(),abs=r.top+(window.scrollY||0);if(abs<innerHeight*1.2){var host=v.parentElement;try{v.pause();v.remove();}catch(e){}if(host&&r.width>200)seed(host);}}});
 document.querySelectorAll('canvas:not(.bfx-em)').forEach(function(c){var r=c.getBoundingClientRect(),abs=r.top+(window.scrollY||0);if(abs<innerHeight*1.15&&r.width>150){var host=c.parentElement;try{c.remove();}catch(e){}seed(host);}});
 document.querySelectorAll('img[src*="logo" i]').forEach(function(i){if(i.dataset.bfx)return;i.dataset.bfx='1';i.src='/logo.png';i.srcset='';});
+var ft=document.querySelector('footer');if(ft&&!ft.querySelector('.bfx-sis')){var sd=document.createElement('div');sd.className='bfx-sis';sd.innerHTML='Boostan Group is the sister studio of <a href="https://www.divangroup.ca" target="_blank" rel="noopener">Divan Group</a> — the same senior team that has served beauty and health brands since 2015. Featured projects and client reviews include work delivered under the Divan name.';ft.appendChild(sd);}
+document.querySelectorAll('h2,h3').forEach(function(h){if(h.dataset.bfxC)return;var s=(h.textContent||'').toLowerCase();var ks=['testimonial','review','clients say','our clients','featured work','our work','case stud','portfolio','success stories'];var hit=false;for(var i=0;i<ks.length;i++){if(s.indexOf(ks[i])>-1){hit=true;break}}if(hit){h.dataset.bfxC='1';var c=document.createElement('div');c.className='bfx-cap';c.textContent='Includes projects and reviews delivered by our team under sister studio Divan Group (est. 2015).';h.insertAdjacentElement('afterend',c);}});
 document.querySelectorAll('h1').forEach(function(h){var r=h.getBoundingClientRect(),abs=r.top+(window.scrollY||0);if(abs>innerHeight||h.dataset.bfxH)return;var tx=h.textContent||'';if(tx.indexOf('Plant')>-1&&tx.indexOf('Flourish')>-1){h.dataset.bfxH='1';h.innerHTML='<span class="bfx-w bfx-w1">Plant.</span> <span class="bfx-w bfx-w2">Nurture.</span> <span class="bfx-w bfx-w3">Flourish.</span>';if(!(h.nextElementSibling&&h.nextElementSibling.className==='bfx-fa')){var fa=document.createElement('div');fa.className='bfx-fa';fa.textContent='\u0628\u0650\u06A9\u0627\u0631. \u0628\u067E\u0631\u0648\u0631. \u0634\u06A9\u0648\u0641\u0627 \u0634\u0648.';h.parentElement.insertBefore(fa,h.nextSibling);}}});
 };
 new MutationObserver(fix).observe(document.documentElement,{childList:true,subtree:true});document.addEventListener('DOMContentLoaded',fix);setInterval(fix,600);})();<\/script>
