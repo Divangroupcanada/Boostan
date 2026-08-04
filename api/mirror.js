@@ -54,7 +54,6 @@ const STR = [
   ['instagram.com/divan.group','instagram.com/boostan.group'],
   ['youtube.com/@divan.group','youtube.com/@boostan.group'],
   ['@divan.group','@boostan.group'],
-  ['info@boostangroup.com','hello@boostangroup.com'],
   // brand (capitalized only; lowercase divan-* class names must keep matching CSS)
   ['Divan','Boostan'],['DIVAN','BOOSTAN'],
   // founding: truthful sister-brand framing
